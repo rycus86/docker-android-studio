@@ -1,6 +1,7 @@
 FROM debian
 
 LABEL maintainer "Viktor Adam <rycus86@gmail.com>"
+LABEL contributor="Chuba Oraka"
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
   gcc git openssh-client less curl ca-certificates zip unzip \

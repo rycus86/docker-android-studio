@@ -20,7 +20,7 @@ docker run -d --rm \
   -v ~/Android/:/home/developer/Android/Sdk \
   -v "$PWD:/home/developer/Project" \
   --name androidstudio-$(head -c 4 /dev/urandom | xxd -p)-$(date +'%Y%m%d-%H%M%S')  \
-chubaoraka/docker-androidstudio:3.4.1.0
+chubaoraka/docker-androidstudio
 ```
 
 Explanation:
