@@ -2,8 +2,9 @@ Docker container to run Android Studio (https://developer.android.com/studio/ind
 
 ## Usage
 
-```
-docker run --rm \
+Run Android Studio with the files in the working directory by typing the following command:
+```bash
+docker run -d --rm \
   --privileged \
   -e DISPLAY=${DISPLAY} \
   --device /dev/dri \
@@ -13,14 +14,13 @@ docker run --rm \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   -v /dev/bus/usb:/dev/bus/usb \
   -v /usr/share/X11/xkb:/usr/share/X11/xkb:ro \
-  -v ~/.AndroidStudio:/home/developer/.AndroidStudio \
-  -v ~/.AndroidStudio.android:/home/developer/.android \
   -v ~/.AndroidStudio.java:/home/developer/.java \
-  -v ~/.AndroidStudio.gradle:/home/developer/.gradle \
-  -v ~/.AndroidStudio.sdk:/home/developer/Android/Sdk \
-  -v ~/Project:/home/developer/Project \
-  --name androidstudio-$(head -c 4 /dev/urandom | xxd -p)-$(date +'%Y%m%d-%H%M%S') \
-rycus86/androidstudio:3.4
+  -v ~/.AndroidStudio.config:/home/developer/.config \
+  -v ~/.gradle:/home/developer/.gradle \
+  -v ~/Android/:/home/developer/Android/Sdk \
+  -v "$PWD:/home/developer/Project" \
+  --name androidstudio-$(head -c 4 /dev/urandom | xxd -p)-$(date +'%Y%m%d-%H%M%S')  \
+chubaoraka/docker-androidstudio:3.4.1.0
 ```
 
 Explanation:
