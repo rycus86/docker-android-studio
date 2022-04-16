@@ -8,6 +8,9 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   libfontconfig1 libgtk2.0-0 libxslt1.1 libxxf86vm1 \
   lib32stdc++6 libmagic1 libpulse0 \
   libglu1-mesa libgl1-mesa-dri mesa-utils libpci3 pciutils usbutils file \
+  && apt-get remove openjdk* \
+  && apt-get purge --auto-remove openjdk* \
+  && apt-get -y install openjdk-11-jdk \
   && rm -rf /var/lib/apt/lists/* \
   && useradd -ms /bin/bash developer \
 # required for the developer user to access /dev/kvm
