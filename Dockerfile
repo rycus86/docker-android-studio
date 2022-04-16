@@ -1,6 +1,7 @@
 FROM debian
 
 LABEL maintainer "Viktor Adam <rycus86@gmail.com>"
+LABEL contributor="Chuba Oraka"
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
   gcc git openssh-client less curl ca-certificates zip unzip \
@@ -8,13 +9,16 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   libfontconfig1 libgtk2.0-0 libxslt1.1 libxxf86vm1 \
   lib32stdc++6 libmagic1 libpulse0 \
   libglu1-mesa libgl1-mesa-dri mesa-utils libpci3 pciutils usbutils file \
+  && apt-get remove openjdk* \
+  && apt-get purge --auto-remove openjdk* \
+  && apt-get -y install openjdk-11-jdk \
   && rm -rf /var/lib/apt/lists/* \
   && useradd -ms /bin/bash developer \
 # required for the developer user to access /dev/kvm
   && adduser developer root
 
-ARG studio_source=https://dl.google.com/dl/android/studio/ide-zips/3.4.1.0/android-studio-ide-183.5522156-linux.tar.gz
-ARG studio_local_dir=AndroidStudio3.4
+ARG studio_source=https://dl.google.com/dl/android/studio/ide-zips/2020.3.1.26/android-studio-2020.3.1.26-linux.tar.gz
+ARG studio_local_dir=AndroidStudio2020.3
 
 WORKDIR /opt/android-studio
 
