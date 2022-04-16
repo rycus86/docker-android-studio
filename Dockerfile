@@ -13,8 +13,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 # required for the developer user to access /dev/kvm
   && adduser developer root
 
-ARG studio_source=https://dl.google.com/dl/android/studio/ide-zips/3.4.1.0/android-studio-ide-183.5522156-linux.tar.gz
-ARG studio_local_dir=AndroidStudio3.4
+ARG studio_source=https://dl.google.com/dl/android/studio/ide-zips/2020.3.1.26/android-studio-2020.3.1.26-linux.tar.gz
+ARG studio_local_dir=AndroidStudio2020.3
 
 WORKDIR /opt/android-studio
 
